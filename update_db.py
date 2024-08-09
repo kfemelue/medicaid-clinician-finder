@@ -1,5 +1,7 @@
 import os
 import requests
+import database
+from model import Clinician
 from requests.exceptions import HTTPError, Timeout, RequestException
 
 
@@ -8,7 +10,13 @@ def get_clinicians(self):
     try:
         responses = requests.get(external_api_url)
         data = responses.json()
-        return data
+
+        for item in data:
+            clinician = Clinician(**item)
+            document = clinician.dict()
+            database.create_clinician(document)
+            
+        print("Database Update Complete")
 
     except HTTPError as http_error:
         return f"HTTP Error: {http_error}"
@@ -21,4 +29,3 @@ def get_clinicians(self):
 
     except Exception as exception:
         return f"HTTP Error: {exception}"
-
