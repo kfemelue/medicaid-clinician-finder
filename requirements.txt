@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+urllib3
+wheel
+motor
