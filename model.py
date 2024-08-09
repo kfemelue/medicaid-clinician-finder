@@ -1,3 +1,34 @@
 from pydantic import BaseModel
 
 class Clinician(BaseModel):
+      npi: str
+      ind_pac_id: str
+      ind_enrl_id: str
+      provider_last_name: str
+      provider_first_name: str
+      provider_middle_name: str
+      suff: str
+      gndr: str
+      cred: str
+      med_sch: str
+      grd_yr: str
+      pri_spec: str
+      sec_spec_1: str
+      sec_spec_2: str
+      sec_spec_3: str
+      sec_spec_4: str
+      sec_spec_all: str
+      telehlth: str
+      facility_name: str
+      org_pac_id: str
+      num_org_mem: str
+      adr_ln_1: str
+      adr_ln_2: str
+      ln_2_sprs: str
+      citytown: str
+      state: str
+      zip_code: str
+      telephone_number: str
+      ind_assgn: str
+      grp_assgn: str
+      adrs_id: str
