@@ -3,3 +3,4 @@ uvicorn
 urllib3
 wheel
 motor
+pydantic

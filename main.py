@@ -6,11 +6,11 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 environment = "dev"
 if environment == "dev":
-    origins = [os.getenv('DEV_ORIGINS')]
+    origins = [os.getenv('DEV_ORIGIN')]
 elif environment == "qa":
-    origins = [os.getenv('QA_ORIGINS')]
+    origins = [os.getenv('QA_ORIGIN')]
 elif environment == "prod":
-    origins = [os.getenv('PROD_ORIGINS')]
+    origins = [os.getenv('PROD_ORIGIN')]
 
 app.add_middleware(
     CORSMiddleware,
@@ -20,6 +20,17 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+
 @app.get("/")
-def read_root():
+def get_homepage():
     return {"Ping": "Pong"}
+
+
+@app.get("/api/clinicians")
+async def get_clinicians():
+    return 1
+
+
+@app.get("/api/clinician/id")
+async def get_clinician():
+    return 1
