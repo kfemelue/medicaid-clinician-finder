@@ -1,8 +1,8 @@
 from model import Clinician
 import motor.motor_asyncio as mt
-import os
+import config
 
-client = mt.AsyncIOMotorClient(os.getenv("MONGO_LOCAL_CLIENT"))
+client = mt.AsyncIOMotorClient(config.mongo_client)
 database = client.MedicaidFinder
 collection = database.clinician
 

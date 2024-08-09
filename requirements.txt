@@ -5,3 +5,4 @@ wheel
 motor
 pydantic
 requests
+python-dotenv

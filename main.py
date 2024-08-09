@@ -1,16 +1,10 @@
-import os
+import config
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 # App Object to create fast API app
 app = FastAPI()
-environment = "dev"
-if environment == "dev":
-    origins = [os.getenv('DEV_ORIGIN')]
-elif environment == "qa":
-    origins = [os.getenv('QA_ORIGIN')]
-elif environment == "prod":
-    origins = [os.getenv('PROD_ORIGIN')]
+origins = config.origins
 
 app.add_middleware(
     CORSMiddleware,
