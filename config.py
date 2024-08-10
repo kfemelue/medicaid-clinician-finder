@@ -5,6 +5,7 @@ load_dotenv()
 
 environment = "dev"
 clinician_data = os.getenv('CLINICIAN_DATA')
+national_downloadable_file = os.getenv('NATIONAL_DOWNLOADABLE_FILE')
 
 if environment == "dev":
     origins = [os.getenv('DEV_ORIGIN')]
