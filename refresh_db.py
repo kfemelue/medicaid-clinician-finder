@@ -12,11 +12,13 @@ async def get_clinicians():
         print("Fetching Data")
         responses = requests.get(external_api_url)
         data = responses.json()
+        data_list = data['results']
 
-        for item in data['results']:
+        for item in data_list:
             clinician = Clinician(**item)
-            document = clinician.dict()
-            await database.create_clinician(document)
+            item = clinician.dict()
+        
+        await database.refresh_clinicians(data_list)
 
     except HTTPError as http_error:
         print(f"HTTP Error: {http_error}")
@@ -35,7 +37,7 @@ async def get_clinicians():
         return f"Exception: {exception}"
     
     finally:
-        print("Database Update Complete")
+        print("Collection Update Complete")
 
 
 asyncio.run(get_clinicians())

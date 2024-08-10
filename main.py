@@ -25,6 +25,6 @@ async def get_clinicians():
     return 1
 
 
-@app.get("/api/clinician/id")
+@app.get("/api/clinicians/id")
 async def get_clinician():
     return 1

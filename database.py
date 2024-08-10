@@ -13,7 +13,8 @@ async def get_all():
         clinicians.append(Clinician(**document))
     return clinicians
 
-async def create_clinician(Clinician):
-    document = Clinician
-    result = await collection.insert_one(document)
+async def refresh_clinicians(clinician_list):
+    await collection.delete_many({})
+    documents = clinician_list
+    result = await collection.insert_many(documents)
     return result

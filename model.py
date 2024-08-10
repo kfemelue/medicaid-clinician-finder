@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 class Clinician(BaseModel):
+      _id: str
       npi: str
       ind_pac_id: str
       ind_enrl_id: str

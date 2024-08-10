@@ -12,7 +12,9 @@ if environment == "dev":
 
 elif environment == "qa":
     origins = [os.getenv('QA_ORIGIN')]
+    mongo_client = os.getenv("MONGO_QA_CLIENT")
 
 elif environment == "prod":
     origins = [os.getenv('PROD_ORIGIN')]
+    mongo_client = os.getenv("MONGO_PROD_CLIENT")
 
