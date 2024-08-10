@@ -1,12 +1,13 @@
 import config
 import requests
 import database
+import asyncio
 from model import Clinician
 from requests.exceptions import HTTPError, Timeout, RequestException
 
+
 async def get_clinicians():
     external_api_url = config.clinician_data
-    print(external_api_url)
     try:
         print("Fetching Data")
         responses = requests.get(external_api_url)
@@ -16,7 +17,6 @@ async def get_clinicians():
             clinician = Clinician(**item)
             document = clinician.dict()
             await database.create_clinician(document)
-
 
     except HTTPError as http_error:
         print(f"HTTP Error: {http_error}")
@@ -38,5 +38,4 @@ async def get_clinicians():
         print("Database Update Complete")
 
 
-
-get_clinicians()
+asyncio.run(get_clinicians())
